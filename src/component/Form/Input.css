@@ -1,0 +1,11 @@
+.input-style{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    justify-items: space-evenly;
+
+}
+.input-style label{
+    margin-right: 10px;
+    font-weight: bold;
+}
