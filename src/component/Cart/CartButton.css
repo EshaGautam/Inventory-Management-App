@@ -1,5 +1,16 @@
-.modal{
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: hidden;
+.modal-cart {
+  background-color: #f8eeee; /* Dark background color */
+  color: black;  
+  height: 10%
+}
+
+.modal-cart h1 {
+margin-left: 45%;
+}
+
+.modal-cart button{
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    top:30px;
 }

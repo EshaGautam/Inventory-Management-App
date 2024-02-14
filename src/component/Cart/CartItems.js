@@ -3,6 +3,7 @@ import InventoryContext from "../Store/InvertoryContext";
 import { useContext } from "react";
 import './CartItems.css'
 import Button from "../Button/Button";
+import ReactDOM from "react-dom";
 
 
 function CartItems(props) {
@@ -35,9 +36,24 @@ const handleDelete=(id,qty)=>{
      <div className="cart-modal">
        {CartItem}
        <div className="amt">
-        {addToCart.length>0?(<> <span>Total Amount:{totalAmount}</span>
-         <Button type='button' onClick={props.onClick}>Close</Button></>):(<p>Cart-Is-Empty</p>)
-         }
+         {addToCart.length > 0 ? (
+           <>
+             <span>Total Amount: {totalAmount}</span>
+             <div className="btn-cart">
+               <Button type="button" onClick={props.onClick}>
+                 Close
+               </Button>
+               <Button type="button">Order</Button>
+             </div>
+           </>
+         ) : (
+           <>
+             <p>Cart-Is-Empty</p>
+             <Button type="button" onClick={props.onClick}>
+               Close
+             </Button>
+           </>
+         )}
        </div>
      </div>
    </div>
@@ -45,4 +61,13 @@ const handleDelete=(id,qty)=>{
 
 }
 
-export default CartItems;
+const CartModal = (props) => {
+  return ReactDOM.createPortal(
+    <CartItems onClick={props.onClick} />,
+    document.getElementById('modal-root') 
+  );
+}
+
+export default CartModal;
+
+

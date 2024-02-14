@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
-import CartItems from './CartItems'
+import CartModal from './CartItems';
 import InventoryContext from "../Store/InvertoryContext";
 import { useContext } from "react";
 import './CartButton.css'
@@ -19,8 +19,9 @@ const handleCartModal=()=>{
 
 
   return (
-    <div className="modal">
-      {!orderInCart && <CartItems onClick={handleCartModal} />}
+    <div className='modal-cart'>
+      <h1>Inventory</h1>
+      {!orderInCart && <CartModal onClick={handleCartModal} />}
       <Button type="button" onClick={handleCartModal} className="cart-btn">
         Open-Cart<span>{cartQty}</span>
       </Button>

@@ -1,9 +1,16 @@
-.cart{
+.cart {
     border: 5px solid black;
     width: 20vw;
-   margin-left: 75%;
-   margin-top: 10px;
+    position: fixed;
+    right: 5%; 
+    top: 9%; 
+    height: auto;
+    z-index: 100;
+    padding: 10px;
+     background-color: #f8eeee; 
+    color: black;
 }
+
 .cart-modal-items{
     list-style: none;
     margin-right: 5%;
@@ -12,6 +19,7 @@
 .cart-modal-items li{
     display: flex;
     gap:5px;
+  flex-wrap: wrap;
     
 }
 .cart-btn{
@@ -30,9 +38,11 @@ margin-left: 25%;
     display: flex;
     
 }
-.amt button{
- 
-    margin-top: 10px;
+
+.btn-cart{
+    display: flex;
+       margin-top: 10px;
     margin-left: 30px;
     margin-bottom: 10px;
+    gap:5px;
 }

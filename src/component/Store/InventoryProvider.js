@@ -78,8 +78,8 @@ const handleCartItemsDel = (id, qty) => {
 
   setForm((prev) => {
     return prev.map((meds) => {
-      if (id === meds.id) {
-        let updatedQty = +meds.qty + qty;
+      if (id === meds.id || meds.qty === "OUT-OF-STOCK") {
+        let updatedQty = (+meds.qty + qty || 0+qty)
         return { ...meds, qty: updatedQty };
       }
       return meds;
