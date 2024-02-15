@@ -7,7 +7,7 @@
  flex-direction: row;
  gap:25px;
  justify-content: center;
-  margin-top: 5%;
+  margin-top:10px;
   font-weight: bold;
 }
 .item-input{

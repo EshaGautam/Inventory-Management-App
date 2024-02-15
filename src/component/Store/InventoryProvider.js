@@ -124,7 +124,7 @@ const handleDecreaseQty=(id,qty)=>{
      return prevMeds.map((meds) => {
        if (meds.id === id || +meds.qty===+qty) {
         
-         return { ...meds, qty: +meds.qty +1 };
+         return { ...meds, qty: +meds.qty + 1 || 1 };
        }
        return meds;
      });
