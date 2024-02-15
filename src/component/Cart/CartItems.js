@@ -1,4 +1,4 @@
-import React from "react";
+
 import InventoryContext from "../Store/InvertoryContext";
 import { useContext } from "react";
 import './CartItems.css'
@@ -9,12 +9,25 @@ import ReactDOM from "react-dom";
 function CartItems(props) {
   
  const MedsCtx = useContext(InventoryContext);
- const { addToCart,handleCartItemsDel} = MedsCtx;
+ const { addToCart,handleCartItemsDel,handleIncreaseQty,handleDecreaseQty,medsQty} = MedsCtx;
 
 const totalAmount = addToCart.reduce((total,meds)=>total+meds.price*meds.qty,0)
 
 const handleDelete=(id,qty)=>{
  handleCartItemsDel(id,qty)
+}
+
+
+const handleIncrease=(qty,id)=>{
+
+  handleIncreaseQty(qty,id)
+}
+
+
+const handleDecrease=(qty,id)=>{
+  console.log('clicked')
+  handleDecreaseQty(qty,id)
+
 }
 
 
@@ -26,7 +39,31 @@ const handleDelete=(id,qty)=>{
          <span>Name:{meds.name}</span>
          <span>Price:{meds.price}</span>
          <span>Qty:{meds.qty}</span>
-         <span><Button type='button' onClick={()=>handleDelete(meds.id,meds.qty)}>X</Button></span>
+         <span>
+           <Button
+             type="button"
+             onClick={() => handleIncrease(meds.id, meds.qty)}
+             disabled={meds.qty < medsQty ? false : true}
+           >
+             +
+           </Button>
+         </span>
+         <span>
+           <Button
+             type="button"
+             onClick={() => handleDecrease(meds.id, meds.qty)}
+           >
+             -
+           </Button>
+         </span>
+         <span>
+           <Button
+             type="button"
+             onClick={() => handleDelete(meds.id, meds.qty)}
+           >
+             X
+           </Button>
+         </span>
        </li>
      </ul>
    ));

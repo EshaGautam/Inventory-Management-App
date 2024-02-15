@@ -87,6 +87,70 @@ const handleCartItemsDel = (id, qty) => {
   });
 };
 
+//Increasing Qty in the cart
+
+const handleIncreaseQty=(id,qty)=>{
+
+
+   setForm((prevMeds) => {
+     return prevMeds.map((meds) => {
+       if (meds.id === id || meds.qty===0) {
+        
+         return { ...meds, qty: +meds.qty - 1 || "OUT-OF-STOCK" };
+       }
+       return meds;
+     });
+   });
+   
+    setAddToCart((prevMeds)=>{
+      return prevMeds.map((meds)=>{
+        if(meds.id===id && meds.qty<=qty){
+          return {...meds,qty:+meds.qty+1}
+        }
+        return meds
+      }
+        
+    )
+  }
+    )
+
+
+}
+
+// Decreasing Qty in the cart 
+const handleDecreaseQty=(id,qty)=>{
+
+   setForm((prevMeds) => {
+     return prevMeds.map((meds) => {
+       if (meds.id === id || +meds.qty===+qty) {
+        
+         return { ...meds, qty: +meds.qty +1 };
+       }
+       return meds;
+     });
+   });
+   
+    setAddToCart((prevMeds)=>{
+      return prevMeds.map((meds)=>{
+        if(meds.id===id && meds.qty > 0){
+          return {...meds,qty:+meds.qty-1}
+        }
+        return meds
+      }
+        
+    )
+  }
+    )
+   
+  
+if(qty===1){
+    let updateCart = addToCart.filter((meds) => id !== meds.id);
+    setAddToCart(updateCart);
+}
+
+}
+
+
   const inventory = {
     handleMedsQty,
     medsQty,
@@ -98,8 +162,9 @@ const handleCartItemsDel = (id, qty) => {
     addedQty,
     updatedQty,
     setAddedQty,
-    handleCartItemsDel
-
+    handleCartItemsDel,
+    handleIncreaseQty,
+    handleDecreaseQty
 
   };
 
